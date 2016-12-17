@@ -1,17 +1,18 @@
-define(['State', 'Assets'], function(State, Assets){
+define(['State', 'Player'], function(State, Player){
 
     var GameState = State.extend({
-        init:function(){
-            this._super();
+
+        init: function(_handler){
+            this._super(_handler);
+            this.player = new Player(_handler, 20, 20)
+        },
+        tick: function(_dt){
+            this.player.tick(_dt);
+        },
+        render: function(_g){
+            this.player.render(_g);
         }
     });
-
-    GameState.prototype.tick = function(_dt){
-    };
-
-    GameState.prototype.render = function(_g){
-        _g.myDrawImage(Assets.getAssets("mario").idle, 20, 20, Assets.getAssets('mario').width, Assets.getAssets('mario').height);
-    };
 
     return GameState;
 });

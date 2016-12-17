@@ -3,27 +3,28 @@ define(['Jquery', 'Class'], function($, Class){
     var canvas, title, width, height, graphics;
 
     var Display = Class.extend({
-        init:function(_title, _width, _height){
+        init: function(_title, _width, _height){
             title = _title;
             width = _width;
             height = _height;
             createDisplay();
+        },
+
+        //Getters
+        getTitle: function(){
+            return title;
+        },
+        getWidth: function(){
+            return width;
+        },
+        getHeight: function(){
+            return height;
+        },
+        getGraphics: function(){
+            return graphics;
         }
     });
 
-    //Getters
-    Display.prototype.getTitle = function(){
-        return title;
-    };
-    Display.prototype.getWidth = function(){
-        return width;
-    };
-    Display.prototype.getHeight = function(){
-        return height;
-    };
-    Display.prototype.getGraphics = function(){
-        return graphics;
-    };
 
     //Private Method
     function createDisplay(){
@@ -42,5 +43,4 @@ define(['Jquery', 'Class'], function($, Class){
     };
 
     return Display;
-
 });

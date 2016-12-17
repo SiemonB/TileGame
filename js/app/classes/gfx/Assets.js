@@ -3,7 +3,7 @@ define(['Class', 'ImageLoader', 'SpriteSheet'], function(Class, ImageLoader, Spr
     var assets = {};
 
     var Assets = Class.extend({
-        init:function(_name, _path, _width, _height){
+        init: function(_name, _path, _width, _height){
             assets[_name] = this;
             this.name = _name;
             this.path = _path;
@@ -19,7 +19,7 @@ define(['Class', 'ImageLoader', 'SpriteSheet'], function(Class, ImageLoader, Spr
         return assets[_name];
     };
 
-    var ast = new Assets("mario", "res/textures/mario.png", 28, 42);
+    var ast = new Assets("player", "res/textures/mario.png", 28, 42);
     ast.idle = ast.sheet.crop(0, 0, 28, 42);
 
     return Assets;

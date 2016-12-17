@@ -13,6 +13,12 @@ requirejs.config({
         "State":"app/classes/states/State",
         "GameState":"app/classes/states/Gamestate",
         "Display":"app/classes/display/Display",
+        "KeyManager":"app/classes/input/KeyManager",
+        "Handler":"app/classes/Handler",
+        "Entity":"app/classes/entities/Entity",
+        "Creature":"app/classes/entities/creatures/Creature",
+        "Player":"app/classes/entities/creatures/Player",
+
 
     }
 });
