@@ -11,7 +11,7 @@ define(['Creature', 'Assets'], function(Creature, Assets){
             this.move();
         },
         render: function(_g){
-            _g.myDrawImage(this.assets.idle, this.x, this.y, this.assets.getAssets('player').width, this.assets.getAssets('player').height);
+            _g.myDrawImage(this.assets.idle, this.x, this.y, this.assets.width, this.assets.height);
         },
 
         getInput: function(_dt){

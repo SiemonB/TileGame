@@ -1,4 +1,4 @@
-define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'Handler'], function(Class, Display, State, GameState, KeyManager, Handler){
+define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'Handler'], function (Class, Display, State, GameState, KeyManager, Handler) {
 
     var _this;
     var running = false;
@@ -7,17 +7,17 @@ define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'Handler'], func
 
 
     var Game = Class.extend({
-        init: function(_title, _width, _height){
+        init: function (_title, _width, _height) {
             _this = this;
             title = _title;
             width = _width;
             height = _height;
             keyManager = new KeyManager();
         },
-        run: function(){
+        run: function () {
             init();
             var fps = 30;
-            var timePerTick = 1000/fps;
+            var timePerTick = 1000 / fps;
             var delta = 0;
             var now;
             var lastTime = Date.now();
@@ -25,16 +25,16 @@ define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'Handler'], func
             var ticks = 0;
 
             // Game Loop
-            function loop(){
-                if(running){
+            function loop() {
+                if (running) {
                     now = Date.now();
                     delta = now - lastTime;
                     timer += delta;
                     lastTime = now;
                 }
 
-                if(timer >= timePerTick){
-                    dt = timer/1000;
+                if (timer >= timePerTick) {
+                    dt = timer / 1000;
                     tick(dt);
                     render();
                     timer = 0;
@@ -43,42 +43,41 @@ define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'Handler'], func
             }
             loop();
         },
-        start: function(){
+        start: function () {
             console.log("Game Running")
-            if(running)return;
+            if (running) return;
             running = true;
             this.run();
         },
-        getKeyManager: function(){
+        getKeyManager: function () {
             return keyManager;
         },
-        getWidth: function(){
+        getWidth: function () {
             return width;
         },
-        getHeight: function(){
+        getHeight: function () {
             return height;
         }
     });
 
-    function init(){
+    function init() {
         display = new Display(title, width, height);
         g = display.getGraphics();
         handler = new Handler(_this);
         gameState = new GameState(handler);
         State.setState(gameState);
-        console.log(gameState);
     }
 
-    function tick(_dt){
+    function tick(_dt) {
         keyManager.tick();
-        if(State.getState() != null){
+        if (State.getState() != null) {
             State.getState().tick(_dt);
         }
     }
 
-    function render(){
+    function render() {
         g.clearRect(0, 0, width, height);
-        if(State.getState() != null){
+        if (State.getState() != null) {
             State.getState().render(g);
         }
     }

@@ -6,6 +6,7 @@ define(['Class'], function(Class){
             this.y = _y;
             this.width = _width;
             this.height = _height;
+            this.handler = _handler;
         },
         tick: function(_dt){
 
