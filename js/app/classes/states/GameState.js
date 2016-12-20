@@ -11,7 +11,7 @@ define(['State', 'Player', 'TileLoader'], function (State, Player, Tile) {
         },
         render: function (_g) {
             this.player.render(_g);
-            //Tile.tiles[0].render(_g, 0, 0);
+            Tile.tiles[0].render(_g, 0, 0); //Array is empty for some reason, guessing it should contain the contents of the same array in Tiles.js
 
 
         }
