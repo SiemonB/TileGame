@@ -26,26 +26,20 @@ define(['Class', 'ImageLoader', 'SpriteSheet'], function (Class, ImageLoader, Sp
 
     //Tile Asset
     var tiles = new Assets("tiles", "res/textures/tiles.png", 30, 30); //30*30 tilesize
-    /* As done by tut
-        tiles.dirt = tiles.sheet.crop(0, tiles.height * 10, tiles.width, tiles.height);
-        tiles.grass = tiles.sheet.crop(0, tiles.height, tiles.width, tiles.height);
-        tiles.stone = tiles.sheet.crop(0, tiles.height * 7, tiles.width, tiles.height);
-    */
 
     function tileSelector(_posX, _posY) { // Function deviated from tut
-        _tile = tiles.sheet.crop(tiles.width * _posX, tiles.height * _posY, tiles.width, tiles.height);
+        _tile = tiles.sheet.crop(
+            tiles.width * _posX,
+            tiles.height * _posY,
+            tiles.width,
+            tiles.height);
+
         return _tile;
     }
 
     tiles.dirt = tileSelector(1, 10);
     tiles.grass = tileSelector(1, 2);
     tiles.stone = tileSelector(1, 7);
-
-    console.log("Assets.js");
-
-    Assets.tiles = tiles;
-
-    console.log(tiles);
 
     return Assets;
 });

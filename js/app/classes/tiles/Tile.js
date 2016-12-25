@@ -14,7 +14,7 @@ define(['Class', 'Assets'], function (Class, Assets) {
         tick: function (_dt) {
 
         },
-        render: function (_g) {
+        render: function (_g, _x, _y) {
             _g.myDrawImage(this.texture, _x, _y, DEFAULT_TILE_WIDTH, DEFAULT_TILE_HEIGHT);
         },
         getId: function () {
@@ -29,12 +29,6 @@ define(['Class', 'Assets'], function (Class, Assets) {
     Tile.DEFAULT_TILE_WIDTH = DEFAULT_TILE_WIDTH;
     Tile.DEFAULT_TILE_HEIGHT = DEFAULT_TILE_HEIGHT;
     Tile.assets = Assets.getAssets("tiles");
-
-    console.log("Tile.js");
-    console.log(tiles);
-
-    console.log("Assets imp.js");
-    console.log(Assets.tiles);
 
     return Tile;
 });

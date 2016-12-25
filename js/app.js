@@ -20,6 +20,8 @@ requirejs.config({
         "Player": "app/classes/entities/creatures/Player",
         "Tile": "app/classes/tiles/Tile",
         "TileLoader": "app/classes/tiles/TileLoader",
+        "World": "app/classes/worlds/World",
+        "Utils": "app/classes/utils/Utils",
         //Tiles
         "GrassTile": "app/classes/tiles/GrassTile",
         "DirtTile": "app/classes/tiles/DirtTile",
