@@ -14,6 +14,11 @@ define(['State', 'Player', 'World'], function (State, Player, World) {
         render: function (_g) {
             this.world.render(_g);
             this.player.render(_g);
+<<<<<<< HEAD
+=======
+            Tile.tiles[0].render(_g, 0, 0); //Array is empty for some reason, guessing it should contain the contents of the same array in Tiles.js
+
+>>>>>>> origin/master
 
         }
     });
