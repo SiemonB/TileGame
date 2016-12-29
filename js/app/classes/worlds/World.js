@@ -14,6 +14,7 @@ define(['Class', 'TileLoader', 'Utils'], function (Class, Tile, Utils) {
             this.height = tokens[1];
             this.spawnX = tokens[2] * Tile.DEFAULT_TILE_WIDTH;
             this.spawnY = tokens[3] * Tile.DEFAULT_TILE_HEIGHT;
+
             for (y = 0; y < this.height; y++) {
                 for (x = 0; x < this.width; x++) {
                     if (!this.tiles[x])
@@ -28,13 +29,16 @@ define(['Class', 'TileLoader', 'Utils'], function (Class, Tile, Utils) {
         render: function (_g) {
             for (y = 0; y < this.height; y++) {
                 for (x = 0; x < this.width; x++) {
+
                     this.getTile(x, y).render(_g, x * Tile.DEFAULT_TILE_WIDTH, y * Tile.DEFAULT_TILE_HEIGHT);
                 }
             }
-        },
 
+
+        },
         getTile: function (_x, _y) {
-            return Tile.tiles[this.tiles[_x][_y]];
+            console.log(this.tiles[0][0]);
+            //return Tile.tiles[this.tiles[_x][_y]];
         },
 
 

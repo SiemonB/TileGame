@@ -2,6 +2,17 @@ define(['Jquery'], function ($) {
     var Utils = {};
     Utils.loadFileAsString = function (_path) {
         var string = "";
+
+        $.getScript(_path, function (data, textStatus, jqxhr) {
+                string = data;
+            })
+            .fail(function (jqxhr, settings, exception) {
+                alert("file:'" + _path + " can not be loaded");
+            });
+
+        console.log(string);
+
+        /*
         $.ajax({
             url: _path,
             type: "get",
@@ -13,6 +24,8 @@ define(['Jquery'], function ($) {
                 alert("file:'" + _path + " can not be loaded");
             }
         });
+        */
+
         return string;
     };
 
