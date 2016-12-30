@@ -1,33 +1,26 @@
 define(['Jquery'], function ($) {
     var Utils = {};
-    Utils.loadFileAsString = function (_path) {
-        var string = "";
+    var mapArray = [];
 
-        $.getScript(_path, function (data, textStatus, jqxhr) {
-                string = data;
-            })
-            .fail(function (jqxhr, settings, exception) {
-                alert("file:'" + _path + " can not be loaded");
-            });
+    Utils.loadFile = function () {
 
-        console.log(string);
+        var _mapWidth = 5;
+        var _mapHeight = 5;
+        var _spawnX = 3;
+        var _spawnY = 3;
 
-        /*
-        $.ajax({
-            url: _path,
-            type: "get",
-            async: false,
-            success: function (_contents) {
-                string = _contents;
-            },
-            error: function () {
-                alert("file:'" + _path + " can not be loaded");
-            }
-        });
-        */
+        var _mapArray = [
+                0, 0, 0, 0, 0,
+                0, 2, 2, 2, 0,
+                0, 2, 0, 2, 0,
+                0, 2, 2, 2, 0,
+                0, 0, 0, 0, 0
+                         ];
 
-        return string;
-    };
+        _mapArray.unshift(_mapWidth, _mapHeight, _spawnX, _spawnY);
+
+        return _mapArray;
+    }
 
     return Utils;
 });

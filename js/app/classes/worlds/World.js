@@ -8,8 +8,10 @@ define(['Class', 'TileLoader', 'Utils'], function (Class, Tile, Utils) {
 
         },
         loadWorld: function (_path) {
-            var file = Utils.loadFileAsString(_path);
-            var tokens = file.replace(/\n/g, " ").split(" ");
+
+            var tokens = Utils.loadFile();
+
+
             this.width = tokens[0];
             this.height = tokens[1];
             this.spawnX = tokens[2] * Tile.DEFAULT_TILE_WIDTH;
@@ -37,8 +39,7 @@ define(['Class', 'TileLoader', 'Utils'], function (Class, Tile, Utils) {
 
         },
         getTile: function (_x, _y) {
-            console.log(this.tiles[0][0]);
-            //return Tile.tiles[this.tiles[_x][_y]];
+            return Tile.tiles[this.tiles[_x][_y]];
         },
 
 
