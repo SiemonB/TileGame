@@ -1,18 +1,29 @@
-define(['Class', 'TileLoader', 'Utils'], function (Class, Tile, Utils) {
-
+define(['Class', 'TileLoader', 'Utils', 'EntityManager', 'Player', 'Tree', 'SpatialGrid'], function (Class, Tile, Utils, EntityManager, Player, Tree, SpatialGrid) {
+    var tree;
     var World = Class.extend({
 
         init: function (_path, _handler) {
             this.tiles = [];
-            this.loadWorld(_path);
             this.handler = _handler;
             _handler.setWorld(this);
+            this.entityManager = new EntityManager(_handler, new Player(_handler, 100, 100));
+
+            this.loadWorld(_path);
+
+            this.spatialGrid = new SpatialGrid(this.width * Tile.DEFAULT_TILE_WIDTH, this.height * Tile.DEFAULT_TILE_HEIGHT, 100);
+
+            this.entityManager.addEntity(new Tree(_handler, 100, 400));
+            this.entityManager.addEntity(new Tree(_handler, 200, 500));
+            this.entityManager.addEntity(new Tree(_handler, 300, 450));
+            this.entityManager.addEntity(new Tree(_handler, 200, 700));
+
+            this.entityManager.getPlayer().setX(this.spawnX);
+            this.entityManager.getPlayer().setY(this.spawnY);
 
         },
         loadWorld: function (_path) {
 
             var tokens = Utils.loadFile();
-
 
             this.width = tokens[0];
             this.height = tokens[1];
@@ -29,7 +40,7 @@ define(['Class', 'TileLoader', 'Utils'], function (Class, Tile, Utils) {
 
         },
         tick: function (_dt) {
-
+            this.entityManager.tick(_dt);
         },
         render: function (_g) {
             // --- Only render whats on the screen --- //
@@ -52,8 +63,9 @@ define(['Class', 'TileLoader', 'Utils'], function (Class, Tile, Utils) {
                 }
             }
 
-
+            this.entityManager.render(_g);
         },
+        //Getters
         getTile: function (_x, _y) {
             return Tile.tiles[this.tiles[_x][_y]];
         },
@@ -62,6 +74,12 @@ define(['Class', 'TileLoader', 'Utils'], function (Class, Tile, Utils) {
         },
         getWidth: function () {
             return this.width;
+        },
+        getEntityManager: function () {
+            return this.entityManager;
+        },
+        getSpatialGrid: function () {
+            return this.spatialGrid;
         }
 
     })

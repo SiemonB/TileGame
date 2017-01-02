@@ -5,7 +5,7 @@ define(['Tile'], function (Tile) {
             this._super(Tile.assets.grass, _id);
         },
         isSolid: function () {
-            return true;
+            return false;
         }
 
 

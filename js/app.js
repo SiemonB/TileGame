@@ -1,4 +1,7 @@
+var _DEBUG_ = false;
+
 requirejs.config({
+
     "baseUrl": "js",
     "paths": {
         //Libs
@@ -24,6 +27,11 @@ requirejs.config({
         "Utils": "app/classes/utils/Utils",
         "GameCamera": "app/classes/gfx/GameCamera",
         "Rectangle": "app/classes/gfx/shapes/Rectangle",
+        "Animation": "app/classes/gfx/Animation",
+        "StaticEntity": "app/classes/entities/statics/StaticEntity",
+        "Tree": "app/classes/entities/statics/Tree",
+        "EntityManager": "app/classes/entities/EntityManager",
+        "SpatialGrid": "app/classes/utils/SpatialGrid",
         //Tiles
         "GrassTile": "app/classes/tiles/GrassTile",
         "DirtTile": "app/classes/tiles/DirtTile",

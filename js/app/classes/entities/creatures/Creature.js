@@ -15,8 +15,26 @@ define(['Entity', 'Tile', 'Rectangle'], function (Entity, Tile, Rectangle) {
 
         },
         move: function () {
-            this.moveX();
-            this.moveY();
+            if (Math.abs(this.xMove) > 0 || Math.abs(this.yMove) > 0) {
+                this.handler.getWorld().getSpatialGrid().remove(new Rectangle(
+                    this.x + this.bounds.x,
+                    this.y + this.bounds.y,
+                    this.bounds.width,
+                    this.bounds.height
+                ), this);
+
+                if (!this.checkEntityCollisions(this.xMove, 0))
+                    this.moveX();
+                if (!this.checkEntityCollisions(0, this.yMove))
+                    this.moveY();
+
+                this.handler.getWorld().getSpatialGrid().insert(new Rectangle(
+                    this.x + this.bounds.x,
+                    this.y + this.bounds.y,
+                    this.bounds.width,
+                    this.bounds.height
+                ), this);
+            }
         },
         moveX: function () {
             if (this.xMove > 0) {
