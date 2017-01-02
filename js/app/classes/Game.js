@@ -1,8 +1,8 @@
-define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'Handler'], function (Class, Display, State, GameState, KeyManager, Handler) {
+define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'Handler', 'GameCamera'], function (Class, Display, State, GameState, KeyManager, Handler, GameCamera) {
 
     var _this;
     var running = false;
-    var title, width, height, g, display, keyManager, handler;
+    var title, width, height, g, display, keyManager, handler, gameCamera;
     var GameState, menuState, settingsState;
 
 
@@ -57,6 +57,9 @@ define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'Handler'], func
         },
         getHeight: function () {
             return height;
+        },
+        getGameCamera: function () {
+            return gameCamera;
         }
     });
 
@@ -64,6 +67,8 @@ define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'Handler'], func
         display = new Display(title, width, height);
         g = display.getGraphics();
         handler = new Handler(_this);
+
+        gameCamera = new GameCamera(handler, 0, 0);
         gameState = new GameState(handler);
         State.setState(gameState);
     }

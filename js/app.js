@@ -22,6 +22,8 @@ requirejs.config({
         "TileLoader": "app/classes/tiles/TileLoader",
         "World": "app/classes/worlds/World",
         "Utils": "app/classes/utils/Utils",
+        "GameCamera": "app/classes/gfx/GameCamera",
+        "Rectangle": "app/classes/gfx/shapes/Rectangle",
         //Tiles
         "GrassTile": "app/classes/tiles/GrassTile",
         "DirtTile": "app/classes/tiles/DirtTile",

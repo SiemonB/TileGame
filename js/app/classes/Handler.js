@@ -1,20 +1,29 @@
-define(['Class'], function(Class){
+define(['Class'], function (Class) {
 
-    var game;
+    var game, world;
 
     var Handler = Class.extend({
-        init: function(_game){
+        init: function (_game) {
             game = _game;
         },
-        getWidth: function(){
+        getWidth: function () {
             return game.getWidth();
         },
-        getHeight: function(){
+        getHeight: function () {
             return game.getHeight();
         },
-        getKeyManager: function(){
+        getKeyManager: function () {
             return game.getKeyManager();
-        }
+        },
+        getGameCamera: function () {
+            return game.getGameCamera();
+        },
+        setWorld: function (_world) {
+            world = _world;
+        },
+        getWorld: function () {
+            return world;
+        },
     });
 
     return Handler;
