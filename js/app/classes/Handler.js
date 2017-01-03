@@ -15,14 +15,23 @@ define(['Class'], function (Class) {
         getKeyManager: function () {
             return game.getKeyManager();
         },
+        getMouseManager: function () {
+            return game.getMouseManager();
+        },
         getGameCamera: function () {
             return game.getGameCamera();
         },
         setWorld: function (_world) {
             world = _world;
         },
+        click: function (_btn) {
+            game.click();
+        },
         getWorld: function () {
             return world;
+        },
+        getDisplay: function () {
+            return game.getDisplay();
         },
     });
 

@@ -21,6 +21,26 @@ define(['Class', 'Tile'], function (Class, Tile) {
 
             this.checkBlankSpace();
         },
+
+        //Getters
+        getxOffset: function () {
+            return parseInt(xOffset);
+        },
+        getyOffset: function () {
+            return parseInt(yOffset);
+        },
+
+        //Setters
+        setxOffset: function (_offset) {
+            xOffset = _offset;
+
+            this.checkBlankSpace();
+        },
+        setyOffset: function (_offset) {
+            yOffset = _offset;
+
+            this.checkBlankSpace();
+        },
         checkBlankSpace: function () {
 
             if (xOffset < 0) {
@@ -34,22 +54,6 @@ define(['Class', 'Tile'], function (Class, Tile) {
                 yOffset = handler.getWorld().getHeight() * Tile.DEFAULT_TILE_HEIGHT - handler.getHeight();
             }
         },
-
-        //Getters
-        getxOffset: function () {
-            return parseInt(xOffset);
-        },
-        getyOffset: function () {
-            return parseInt(yOffset);
-        },
-
-        //Setters
-        setxOffset: function (_offset) {
-            xOffset = _offset;
-        },
-        setyOffset: function (_offset) {
-            yOffset = _offset;
-        }
 
     });
 

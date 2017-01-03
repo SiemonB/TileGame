@@ -9,6 +9,7 @@ define(['Class', 'TileLoader', 'Utils', 'EntityManager', 'Player', 'Tree', 'Spat
             this.entityManager = new EntityManager(_handler, new Player(_handler, 100, 100));
 
             this.loadWorld(_path);
+            this.startDrag = {};
 
             this.spatialGrid = new SpatialGrid(this.width * Tile.DEFAULT_TILE_WIDTH, this.height * Tile.DEFAULT_TILE_HEIGHT, 100);
 
@@ -40,6 +41,7 @@ define(['Class', 'TileLoader', 'Utils', 'EntityManager', 'Player', 'Tree', 'Spat
 
         },
         tick: function (_dt) {
+            this.getMouseInput();
             this.entityManager.tick(_dt);
         },
         render: function (_g) {
@@ -64,7 +66,26 @@ define(['Class', 'TileLoader', 'Utils', 'EntityManager', 'Player', 'Tree', 'Spat
             }
 
             this.entityManager.render(_g);
+
         },
+        click: function (_btn) { //_btn is undefined?
+
+            console.log("Left Btn: " + this.handler.getMouseManager().left +
+                "\nRight Btn: " + this.handler.getMouseManager().right +
+                "\nMiddle Btn: " + this.handler.getMouseManager().middle
+            );
+
+            if (_btn == "left") {
+                alert("left btn pressed")
+                var pos = this.handler.getMouseManager().getMousePosition();
+                this.startDrag = {
+                    x: pos.x + this.handler.getGameCamera().getxOffset(),
+                    y: pos.y + this.handler.getGameCamera().getyOffset()
+                };
+            }
+            this.entityManager.click(_btn);
+        },
+
         //Getters
         getTile: function (_x, _y) {
             return Tile.tiles[this.tiles[_x][_y]];
@@ -80,6 +101,16 @@ define(['Class', 'TileLoader', 'Utils', 'EntityManager', 'Player', 'Tree', 'Spat
         },
         getSpatialGrid: function () {
             return this.spatialGrid;
+        },
+        getMouseInput() {
+            var pos = this.handler.getMouseManager().getMousePosition();
+
+
+            if (this.handler.getMouseManager().middle) {
+                this.handler.getGameCamera().setxOffset(this.startDrag.x - pos.x);
+                this.handler.getGameCamera().setyOffset(this.startDrag.y - pos.y);
+
+            }
         }
 
     })

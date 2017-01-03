@@ -1,9 +1,9 @@
-define(['Jquery', 'Class'], function($, Class){
+define(['Jquery', 'Class'], function ($, Class) {
     //Private Variables
     var canvas, title, width, height, graphics;
 
     var Display = Class.extend({
-        init: function(_title, _width, _height){
+        init: function (_title, _width, _height) {
             title = _title;
             width = _width;
             height = _height;
@@ -11,31 +11,34 @@ define(['Jquery', 'Class'], function($, Class){
         },
 
         //Getters
-        getTitle: function(){
+        getTitle: function () {
             return title;
         },
-        getWidth: function(){
+        getWidth: function () {
             return width;
         },
-        getHeight: function(){
+        getHeight: function () {
             return height;
         },
-        getGraphics: function(){
+        getGraphics: function () {
             return graphics;
+        },
+        getCanvas: function () {
+            return canvas;
         }
     });
 
 
     //Private Method
-    function createDisplay(){
+    function createDisplay() {
         document.title = title;
         var body = document.body;
-        body.innerHTML = ("<canvas id='canvas' width='"+width+"' height='"+height+"'></canvas>");
+        body.innerHTML = ("<canvas id='canvas' width='" + width + "' height='" + height + "'></canvas>");
         canvas = document.getElementById("canvas");
         graphics = canvas.getContext("2d");
     }
 
-    CanvasRenderingContext2D.prototype.myDrawImage = function(asset,_x,_y,_width,_height){
+    CanvasRenderingContext2D.prototype.myDrawImage = function (asset, _x, _y, _width, _height) {
         this.drawImage(asset.sheet,
             asset.x, asset.y,
             asset.width, asset.height,

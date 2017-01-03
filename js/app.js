@@ -1,4 +1,4 @@
-var _DEBUG_ = false;
+var _DEBUG_ = true;
 
 requirejs.config({
 
@@ -32,6 +32,7 @@ requirejs.config({
         "Tree": "app/classes/entities/statics/Tree",
         "EntityManager": "app/classes/entities/EntityManager",
         "SpatialGrid": "app/classes/utils/SpatialGrid",
+        "MouseManager": "app/classes/input/MouseManager",
         //Tiles
         "GrassTile": "app/classes/tiles/GrassTile",
         "DirtTile": "app/classes/tiles/DirtTile",

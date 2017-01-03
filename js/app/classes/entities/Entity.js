@@ -16,6 +16,9 @@ define(['Class', 'Rectangle'], function (Class, Rectangle) {
         render: function (_g) {
             throw ("Entities Must Have a Render Function!");
         },
+        click: function () {
+            throw ("Entities Must Have a Click Function!");
+        },
         getCollisionBounds: function (xOffset, yOffset) {
             return new Rectangle(
                 parseInt(this.x + this.bounds.x + xOffset),
