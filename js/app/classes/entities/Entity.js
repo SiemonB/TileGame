@@ -74,6 +74,18 @@ define(['Class', 'Rectangle'], function (Class, Rectangle) {
         },
         setHeight: function (_height) {
             this.height = _height;
+        },
+        getDistance: function (_e) {
+            var xDist = this.x - _e.x;
+            var yDist = this.y - _e.y;
+
+            return Math.sqrt(xDist * xDist + yDist * yDist);
+        },
+        getAngleTo: function (_e) {
+            var xDist = _e.x - this.x;
+            var yDist = _e.y - this.y;
+
+            return Math.atan2(yDist, xDist);
         }
 
 
