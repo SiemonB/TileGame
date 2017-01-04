@@ -69,14 +69,7 @@ define(['Class', 'TileLoader', 'Utils', 'EntityManager', 'Player', 'Tree', 'Spat
 
         },
         click: function (_btn) { //_btn is undefined?
-
-            console.log("Left Btn: " + this.handler.getMouseManager().left +
-                "\nRight Btn: " + this.handler.getMouseManager().right +
-                "\nMiddle Btn: " + this.handler.getMouseManager().middle
-            );
-
-            if (_btn == "left") {
-                alert("left btn pressed")
+            if (_btn == "right") {
                 var pos = this.handler.getMouseManager().getMousePosition();
                 this.startDrag = {
                     x: pos.x + this.handler.getGameCamera().getxOffset(),
@@ -105,8 +98,14 @@ define(['Class', 'TileLoader', 'Utils', 'EntityManager', 'Player', 'Tree', 'Spat
         getMouseInput() {
             var pos = this.handler.getMouseManager().getMousePosition();
 
+            /*
+            console.log("Left Btn: " + this.handler.getMouseManager().left +
+                "\nRight Btn: " + this.handler.getMouseManager().right +
+                "\nMiddle Btn: " + this.handler.getMouseManager().middle
+            );
+            */
 
-            if (this.handler.getMouseManager().middle) {
+            if (this.handler.getMouseManager().right) {
                 this.handler.getGameCamera().setxOffset(this.startDrag.x - pos.x);
                 this.handler.getGameCamera().setyOffset(this.startDrag.y - pos.y);
 

@@ -24,14 +24,14 @@ define(['Class'], function (Class) {
         setWorld: function (_world) {
             world = _world;
         },
-        click: function (_btn) {
-            game.click();
+        getDisplay: function () {
+            return game.getDisplay();
         },
         getWorld: function () {
             return world;
         },
-        getDisplay: function () {
-            return game.getDisplay();
+        click: function (_btn) {
+            game.click(_btn);
         },
     });
 

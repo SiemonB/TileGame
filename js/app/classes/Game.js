@@ -56,6 +56,9 @@ define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'MouseManager', 
         getMouseManager: function () {
             return mouseManager;
         },
+        getDisplay: function () {
+            return display;
+        },
         getWidth: function () {
             return width;
         },
@@ -64,9 +67,6 @@ define(['Class', 'Display', 'State', 'GameState', 'KeyManager', 'MouseManager', 
         },
         getGameCamera: function () {
             return gameCamera;
-        },
-        getDisplay: function () {
-            return display;
         },
         click: function (_btn) {
             if (State.getState() != null) {
