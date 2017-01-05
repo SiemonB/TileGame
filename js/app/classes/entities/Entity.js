@@ -27,6 +27,9 @@ define(['Class', 'Rectangle'], function (Class, Rectangle) {
                 this.bounds.height
             );
         },
+        isStatic: function () {
+            return false;
+        },
         checkEntityCollisions: function (xOffset, yOffset) {
             var candidates = this.handler.getWorld().getSpatialGrid().retrieve(new Rectangle(
                 this.x + this.bounds.x + xOffset,

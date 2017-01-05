@@ -33,6 +33,7 @@ requirejs.config({
         "EntityManager": "app/classes/entities/EntityManager",
         "SpatialGrid": "app/classes/utils/SpatialGrid",
         "MouseManager": "app/classes/input/MouseManager",
+        "Astar": "app/classes/utils/Astar",
         //Tiles
         "GrassTile": "app/classes/tiles/GrassTile",
         "DirtTile": "app/classes/tiles/DirtTile",

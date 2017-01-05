@@ -6,6 +6,6 @@ define(function(){
         image.src = _path;
         return image;
     };
-    
+
     return ImageLoader;
 });

@@ -1,4 +1,4 @@
-define(['Creature', 'Assets'], function (Creature, Assets) {
+define(['Creature', 'Assets', 'Astar', 'Rectangle'], function (Creature, Assets, Astar, Rectangle) {
 
     var Player = Creature.extend({
         init: function (_handler, _x, _y) {
@@ -6,6 +6,7 @@ define(['Creature', 'Assets'], function (Creature, Assets) {
             this.assets = Assets.getAssets("player");
             this.path = [];
             this.timeStopped = 0;
+            this.astar = new Astar(500, _handler, 50, this, this, 100);
 
             //Collision box vars
             this.bounds.x = 16
@@ -34,6 +35,8 @@ define(['Creature', 'Assets'], function (Creature, Assets) {
             this.assets.animations.idle.tick();
         },
         render: function (_g) {
+            this.astar.render(_g);
+
             _g.myDrawImage( //Drawing player sprite
                 this.getCurrentAnimationFrame(),
                 this.x - this.handler.getGameCamera().getxOffset(),
@@ -54,16 +57,20 @@ define(['Creature', 'Assets'], function (Creature, Assets) {
             };
         },
         click: function (_btn) {
+            var pos = this.handler.getMouseManager().getMousePosition();
+            pos.x += this.handler.getGameCamera().getxOffset();
+            pos.y += this.handler.getGameCamera().getyOffset();
+            var mouseBox = new Rectangle(pos.x, pos.y, 2, 2);
+
             if (_btn == "left") {
-                var pos = this.handler.getMouseManager().getMousePosition();
-
-                var waypoint = {
-                    x: pos.x + this.handler.getGameCamera().getxOffset() - this.width / 2,
-                    y: pos.y + this.handler.getGameCamera().getxOffset() - this.height / 2
-                };
-
-                this.path.push(waypoint);
+                this.astar.updateStart(this.x + this.width / 2, this.y + this.height / 2);
+                this.astar.updateGoal(pos.x, pos.y);
+                this.astar.findPath();
             }
+
+        },
+        setPath: function (_path) {
+            this.path = _path;
         },
         followPath: function (_dt) {
             if (this.path.length > 0) {
